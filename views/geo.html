@@ -49,6 +49,7 @@
   </body>
   <script type="text/javascript" src="/js/lib/jquery-1.11.3.js"></script>
     <script type="text/javascript" src="/js/lib/require.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?type=quick&ak=&v=1.0"></script>
     <script type="text/javascript">
   $(function() {
     startgps();
@@ -84,7 +85,18 @@ function showgps(position) {
     var longitude = position.coords.longitude;
     document.getElementById("lat").value = latitude;
     document.getElementById("lng").value = longitude;
-    alert("获取到的地理位置为latitude：" + latitude + "---longitude=" + longitude);
+   var map = new BMap.Map("allmap");
+                var point = new BMap.Point(latitude,longitude);
+                var gc = new BMap.Geocoder();
+                gc.getLocation(point, function(rs){
+                   var addrComp = rs.addressComponents;
+                   if(addComp&& addComp.street){
+                       alert(JSON.stringify(addrComp));
+                  }
+                });
+                
+
+      );
   } else {
     alert("位置获取不到，请确认您打开了定位服务！");
     var latitude = position.coords.latitude;
