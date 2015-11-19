@@ -82,15 +82,15 @@ function showgps(position) {
   if (position) {
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
-    document.getElementsById("lat").value = latitude;
-    document.getElementsById("lng").value = longitude;
+    document.getElementById("lat").value = latitude;
+    document.getElementById("lng").value = longitude;
     alert("获取到的地理位置为latitude：" + latitude + "---longitude=" + longitude);
   } else {
     alert("位置获取不到，请确认您打开了定位服务！");
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
-    document.getElementsById("lat").value = latitude;
-    document.getElementsById("lng").value = longitude;
+    document.getElementById("lat").value = latitude;
+    document.getElementById("lng").value = longitude;
     alert("定位服务没有打开时获取到的地理位置latitude：" + latitude + "---longitude=" + longitude);
   }
 }
